@@ -2,20 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Background Patterns */
+.grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 4rem 4rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Utility Classes */
+.floating-shape {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-shape-delayed {
+  animation: float 6s ease-in-out infinite 3s;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.profile-container {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: scale(1.02);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f2544;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.text-glow {
+  text-shadow: 
+    0 0 10px rgba(255,255,255,0.4),
+    0 0 20px rgba(255,255,255,0.3),
+    0 0 30px rgba(59,130,246,0.3); /* This adds a blue glow matching your theme */
+}
+
+/* Add a stronger glow for headings */
+.text-glow-strong {
+  text-shadow: 
+    0 0 10px rgba(255,255,255,0.5),
+    0 0 20px rgba(255,255,255,0.4),
+    0 0 30px rgba(59,130,246,0.4),
+    0 0 40px rgba(59,130,246,0.2);
 }
