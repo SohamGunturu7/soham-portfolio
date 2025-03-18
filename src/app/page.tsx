@@ -149,11 +149,11 @@ export default function Home() {
     },
     { 
       title: "SpeakEasy (Python, NIM, Flask, MongoDB, ReactJS, NextJS)",
-      description: "Created an app to help users simulate &quot;difficult&quot; conversations based on their specific preferences. Provided specific feedback as to how the user could change their responses to best fit the situation, ranging from a Career Fair to simply talking to a significant other&apos;s parents!" 
+      description: "Created an app to help users simulate \"difficult\" conversations based on their specific preferences. Provided specific feedback as to how the user could change their responses to best fit the situation, ranging from a Career Fair to simply talking to a significant other's parents!" 
     },
     { 
       title: "MediSenseAI (Python, Scikit-Learn, Pandas, Streamlit, PyTorch, Transformers, Bert)",
-      description: "Fine-tuned an LLM to help diagnose medical conditions based on inputted symptoms. Also create ML algorithms to calculate a user&apos;s chance of certain diseases based on certain demographic data." 
+      description: "Fine-tuned an LLM to help diagnose medical conditions based on inputted symptoms. Also create ML algorithms to calculate a user's chance of certain diseases based on certain demographic data." 
     },
     { 
       title: "ETF Vol Modeling (Python, Yahoo-Finance, Pandas, Scikit-Learn, ReactJS, Seaborn)",
@@ -161,7 +161,7 @@ export default function Home() {
     },
     { 
       title: "RoboInvesting (Python, PolygonAPI, Pandas, Matplotlib, ReactJS)",
-      description: "Reimagines financial planning by using an AI to customize a user&apos;s investment portfolio. Based off a user&apos;s long-term goals, the AI will guide the conversation and create a comprehensive finanical plan!" 
+      description: "Reimagines financial planning by using an AI to customize a user's investment portfolio. Based off a user&apos;s long-term goals, the AI will guide the conversation and create a comprehensive finanical plan!" 
     },
     { 
       title: "Choice Analysis (R, GGPlot2, Tidyverse)",
@@ -397,7 +397,7 @@ export default function Home() {
                 rel="noopener noreferrer" 
                 className="flex flex-col items-center group"
               >
-                <FaLinkedin className="text-white text-7xl mb-6 group-hover:scale-110 transition-transform" />
+                <FaLinkedin className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
                 <p className="text-white text-xl group-hover:text-gray-300">LinkedIn Profile</p>
               </a>
 
@@ -407,7 +407,7 @@ export default function Home() {
                 rel="noopener noreferrer" 
                 className="flex flex-col items-center group"
               >
-                <FaGithub className="text-white text-7xl mb-6 group-hover:scale-110 transition-transform" />
+                <FaGithub className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
                 <p className="text-white text-xl group-hover:text-gray-300">GitHub Profile</p>
               </a>
 
@@ -415,7 +415,7 @@ export default function Home() {
                 href="tel:614-477-4024" 
                 className="flex flex-col items-center group"
               >
-                <FaPhone className="text-white text-7xl mb-6 group-hover:scale-110 transition-transform" />
+                <FaPhone className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
                 <p className="text-white text-xl group-hover:text-gray-300">614-477-4024</p>
               </a>
             </div>
