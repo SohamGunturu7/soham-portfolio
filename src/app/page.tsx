@@ -193,6 +193,7 @@ export default function Home() {
         <button onClick={() => scrollToSection('home')} className="hover:text-gray-300 transition-colors">Home</button>
         <button onClick={() => scrollToSection('about')} className="hover:text-gray-300 transition-colors">About Me</button>
         <button onClick={() => scrollToSection('projects')} className="hover:text-gray-300 transition-colors">Projects</button>
+        <button onClick={() => scrollToSection('skills')} className="hover:text-gray-300 transition-colors">Skills</button>
         <button onClick={() => scrollToSection('experience')} className="hover:text-gray-300 transition-colors">Experience</button>
         <button onClick={() => scrollToSection('contact')} className="hover:text-gray-300 transition-colors">Contact Me</button>
       </nav>
@@ -352,6 +353,66 @@ export default function Home() {
                   onClick={() => setOpenProject(openProject === index ? null : index)}
                 />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SKILLS SECTION */}
+        <section id="skills" className="min-h-screen flex items-center justify-center px-4 py-20">
+          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
+            <h1 className="text-5xl font-bold text-white mb-10">
+              Skills
+              <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
+            </h1>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+              {/* Languages */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-2xl font-bold text-white mb-4">Languages</h2>
+                <div className="flex flex-wrap gap-3">
+                  {["Python", "Java", "JavaScript", "TypeScript", "R", "SQL", "HTML/CSS", "C++", "C"].map((skill) => (
+                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Frameworks & Libraries */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-2xl font-bold text-white mb-4">Frameworks & Libraries</h2>
+                <div className="flex flex-wrap gap-3">
+                  {["React.js", "Next.js", "Node.js", "PyTorch", "TensorFlow", "Pandas", "Scikit-learn", "Matplotlib", "Streamlit"].map((skill) => (
+                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tools & Platforms */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-2xl font-bold text-white mb-4">Tools & Platforms</h2>
+                <div className="flex flex-wrap gap-3">
+                  {["Git", "AWS", "MongoDB", "PostgreSQL", "Docker", "Linux", "Jupyter"].map((skill) => (
+                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Areas of Expertise */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-2xl font-bold text-white mb-4">Areas of Experience</h2>
+                <div className="flex flex-wrap gap-3">
+                  {["Machine Learning", "Data Science", "Full Stack Development", "AI/LLMs", "Data Analysis", "Software Engineering", "Database Management"].map((skill) => (
+                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
