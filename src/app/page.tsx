@@ -406,7 +406,7 @@ export default function Home() {
               <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
                 <h2 className="text-2xl font-bold text-white mb-4">Areas of Experience</h2>
                 <div className="flex flex-wrap gap-3">
-                  {["Machine Learning", "Data Science", "Full Stack Development", "AI/LLMs", "Data Analysis", "Software Engineering", "Database Management", "Quantitative Research"].map((skill) => (
+                  {["Machine Learning", "Data Science", "Full Stack Development", "AI/LLMs", "Data Analysis", "Software Engineering", "Database Management", "Quantitative Research", "CI/CD", "RAG"].map((skill) => (
                     <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
                       {skill}
                     </span>
