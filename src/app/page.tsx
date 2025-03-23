@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle} from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle} from 'react-icons/si';
 import { BsHexagonFill } from 'react-icons/bs';
-import { isNullOrUndefined } from "util";
 
 interface ExperienceProps {
   title: string;
@@ -181,7 +180,7 @@ export default function Home() {
   };
 
   const [openExperience, setOpenExperience] = useState<number | null>(null);
-  const [openProject, setOpenProject] = useState<number | null>(null);
+  //const [openProject, setOpenProject] = useState<number | null>(null);
 
   const experiences = [
     { 
