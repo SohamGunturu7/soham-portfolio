@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira} from 'react-icons/si';
+import { isNullOrUndefined } from "util";
 
 interface ExperienceProps {
   title: string;
@@ -20,30 +22,79 @@ interface ProjectProps {
   onClick: () => void;
 }
 
+const getTechIcon = (tech: string) => {
+  const iconClasses = "w-4 h-4 text-[#D4AF37]";
+  switch (tech.toLowerCase()) {
+    case 'python':
+      return <SiPython className={iconClasses} />;
+    case 'react':
+    case 'reactjs':
+    case 'react.js':
+      return <SiReact className={iconClasses} />;
+    case 'typescript':
+      return <SiTypescript className={iconClasses} />;
+    case 'javascript':
+      return <SiJavascript className={iconClasses} />;
+    case 'mongodb':
+      return <SiMongodb className={iconClasses} />;
+    case 'postgresql':
+      return <SiPostgresql className={iconClasses} />;
+    case 'docker':
+      return <SiDocker className={iconClasses} />;
+    case 'flask':
+      return <SiFlask className={iconClasses} />;
+    case 'nextjs':
+    case 'next.js':
+      return <SiNextdotjs className={iconClasses} />;
+    case 'pytorch':
+      return <SiPytorch className={iconClasses} />;
+    case 'tensorflow':
+      return <SiTensorflow className={iconClasses} />;
+    case 'Postgres':
+      return <SiPostgresql className={iconClasses} />;
+    // Add more cases as needed
+    default:
+      return null;
+  }
+};
+
 const Experience = ({ title, description, timeframe, location, logo, isOpen, onClick }: ExperienceProps) => {
   return (
-    <div className="w-full bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg mb-4 cursor-pointer transition-transform hover:scale-[1.02]" onClick={onClick}>
-      <div className="h-20 flex items-center justify-between px-4">
-        <p className="text-lg font-bold text-white">{title}</p>
-        <Image 
-          src={logo} 
-          alt={`${title} logo`} 
-          width={48} 
-          height={48} 
-          className="h-12 w-12"
-        />
-      </div>
-      <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="p-4 bg-white/5 rounded-lg shadow-lg mt-2">
-          <div className="flex justify-between">
-            <ul className="text-md text-white/90 list-disc list-inside w-3/4">
-              {description.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <div className="text-right w-1/4">
-              <p className="text-md text-white/90"><strong>{timeframe}</strong></p>
-              <p className="text-md text-white/90"><strong>{location}</strong></p>
+    <div className="group relative mb-8">
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4AF37]/50 to-[#B8860B]/50 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
+      <div className="relative w-full bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg cursor-pointer transition-all duration-500 group-hover:border-[#D4AF37]/40" onClick={onClick}>
+        <div className="p-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                <Image 
+                  src={logo} 
+                  alt={`${title} logo`} 
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex-grow">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">{title}</h3>
+                <div className="text-right mt-2 md:mt-0">
+                  <p className="text-[#D4AF37] text-base">{timeframe}</p>
+                  <p className="text-white/60 text-base">{location}</p>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}>
+                <ul className="list-disc space-y-2 text-white/90 mt-4 text-base pl-0">
+                  {description.map((item, idx) => (
+                    <li key={idx} className="ml-4">{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -53,24 +104,60 @@ const Experience = ({ title, description, timeframe, location, logo, isOpen, onC
 };
 
 const Project = ({ title, description, isOpen, onClick }: ProjectProps) => {
-  // Change the regex to keep parentheses in the split
-  const [titleText, parentheticalText] = title.split(/([ ]\(.*\))/);
-  
+  const [titleText, techsText] = title.split(/\s*\((.*?)\)/);
+  const technologies = techsText?.split(', ') || [];
+
   return (
-    <div className="w-full bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg mb-4 cursor-pointer transition-transform hover:scale-[1.02]" onClick={onClick}>
-      <div className="h-20 flex items-center justify-between px-4">
-        <div className="flex items-center">
-          <p className="text-lg font-bold text-white">{titleText}</p>
-          {parentheticalText && (
-            <span className="text-white/80 italic ml-2">
-              {parentheticalText}
+    <div 
+      className={`group bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg cursor-pointer transition-all duration-1000 ease-in-out hover:border-[#D4AF37]/40 ${
+        isOpen 
+          ? 'md:col-span-2 lg:col-span-2 row-span-2 scale-100 z-10' 
+          : 'transform-gpu hover:scale-[1.02] scale-100'
+      }`}
+      onClick={onClick}
+    >
+      <div className={`p-6 h-full flex flex-col transition-all duration-700 ease-out ${
+        isOpen ? 'gap-6' : 'gap-3'
+      }`}>
+        <h3 className="text-xl font-bold text-white transition-transform duration-500">
+          {titleText}
+        </h3>
+        
+        <div className="flex-grow overflow-hidden">
+          <p className={`text-white/90 transition-all duration-700 ease-in-out ${
+            isOpen 
+              ? 'opacity-100 max-h-[500px] transform-gpu translate-y-0' 
+              : 'line-clamp-2 opacity-90 transform-gpu translate-y-0'
+          }`}>
+            {description}
+          </p>
+        </div>
+        
+        <div className={`flex flex-wrap gap-2 transition-all duration-500 ease-out ${
+          isOpen 
+            ? 'opacity-100 transform-gpu translate-y-0' 
+            : 'opacity-90 transform-gpu translate-y-0'
+        }`}>
+          {(isOpen ? technologies : technologies.slice(0, 3)).map((tech) => (
+            <div 
+              key={tech} 
+              className={`flex items-center gap-2 bg-[#D4AF37]/10 rounded-full border border-[#D4AF37]/20 transition-all duration-500 ${
+                isOpen ? 'px-4 py-2 opacity-100' : 'px-3 py-1 opacity-90'
+              }`}
+            >
+              {getTechIcon(tech)}
+              <span className={`text-white/90 transition-all duration-500 ${
+                isOpen ? 'text-sm' : 'text-xs'
+              }`}>
+                {tech}
+              </span>
+            </div>
+          ))}
+          {!isOpen && technologies.length > 3 && (
+            <span className="text-white/60 text-xs px-2 py-1 transition-opacity duration-300">
+              +{technologies.length - 3} more
             </span>
           )}
-        </div>
-      </div>
-      <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="p-4 bg-white/5 rounded-lg shadow-lg mt-2">
-          <p className="text-md text-white/90">{description}</p>
         </div>
       </div>
     </div>
@@ -161,7 +248,7 @@ export default function Home() {
     },
     { 
       title: "RoboInvesting (Python, PolygonAPI, Pandas, Matplotlib, ReactJS)",
-      description: "Reimagines financial planning by using an AI to customize a user's investment portfolio. Based off a user&apos;s long-term goals, the AI will guide the conversation and create a comprehensive finanical plan!" 
+      description: "Reimagines financial planning by using an AI to customize a user's investment portfolio. Based off a user's long-term goals, the AI will guide the conversation and create a comprehensive finanical plan!" 
     },
     { 
       title: "Choice Analysis (R, GGPlot2, Tidyverse)",
@@ -338,12 +425,12 @@ export default function Home() {
 
         {/* PROJECTS SECTION */}
         <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
+          <div className="flex flex-col items-center justify-center w-full max-w-6xl">
             <h1 className="text-5xl font-bold text-white mb-10">
               Projects
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
-            <div className="flex flex-col w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6 w-full">
               {projects.map((project, index) => (
                 <Project
                   key={index}
@@ -365,52 +452,98 @@ export default function Home() {
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-              {/* Languages */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
-                <h2 className="text-2xl font-bold text-white mb-4">Languages</h2>
-                <div className="flex flex-wrap gap-3">
-                  {["Python", "Java", "JavaScript", "TypeScript", "R", "SQL", "HTML/CSS", "C++", "C"].map((skill) => (
-                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Frameworks & Libraries */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
-                <h2 className="text-2xl font-bold text-white mb-4">Frameworks & Libraries</h2>
-                <div className="flex flex-wrap gap-3">
-                  {["React.js", "Next.js", "Node.js", "PyTorch", "TensorFlow", "Pandas", "Scikit-learn", "Matplotlib", "Streamlit", "Django", "Flask"].map((skill) => (
-                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tools & Platforms */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
-                <h2 className="text-2xl font-bold text-white mb-4">Tools & Platforms</h2>
-                <div className="flex flex-wrap gap-3">
-                  {["Git", "AWS", "MongoDB", "PostgreSQL", "Docker", "Linux", "Jupyter"].map((skill) => (
-                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Areas of Expertise */}
+            <div className="grid grid-cols-1 gap-8 w-full">
+              {/* Areas of Experience */}
               <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
                 <h2 className="text-2xl font-bold text-white mb-4">Areas of Experience</h2>
-                <div className="flex flex-wrap gap-3">
-                  {["Machine Learning", "Data Science", "Full Stack Development", "AI/LLMs", "Data Analysis", "Software Engineering", "Database Management", "Quantitative Research", "CI/CD", "RAG"].map((skill) => (
-                    <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors">
-                      {skill}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  {[
+                    { category: "Development", skills: ["Full Stack Development", "Software Engineering", "CI/CD"] },
+                    { category: "AI & Data", skills: ["Machine Learning", "AI/LLMs", "RAG"] },
+                    { category: "Analytics", skills: ["Data Science", "Data Analysis", "Quantitative Research"] },
+                    { category: "Infrastructure", skills: ["Database Management", "System Design", "Cloud Architecture"] }
+                  ].map((category) => (
+                    <div key={category.category} className="bg-white/5 p-4 rounded-lg">
+                      <span className="text-[#D4AF37] font-semibold mb-3 block">{category.category}</span>
+                      <div className="flex flex-col gap-2">
+                        {category.skills.map((skill) => (
+                          <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors text-sm">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Languages */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-8 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-3xl font-bold text-white mb-6">Languages</h2>
+                <div className="flex flex-wrap gap-4">
+                  {[
+                    { name: "Python", icon: <SiPython /> },
+                    { name: "Java", icon: <SiJira /> },
+                    { name: "JavaScript", icon: <SiJavascript /> },
+                    { name: "TypeScript", icon: <SiTypescript /> },
+                    { name: "R", icon: <SiR /> },
+                    { name: "SQL", icon: <SiPostgresql /> },
+                    { name: "HTML/CSS", icon: <SiHtml5 /> },
+                    { name: "C++", icon: <SiCplusplus /> },
+                    { name: "C", icon: <SiC /> }
+                  ].map((skill) => (
+                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-6 py-3 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-3">
+                      <span className="text-[#D4AF37] text-2xl">{skill.icon}</span>
+                      <span className="text-lg">{skill.name}</span>
                     </span>
                   ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                {/* Tools & Platforms */}
+                <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                  <h2 className="text-2xl font-bold text-white mb-4">Tools & Platforms</h2>
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    {[
+                      { name: "Git", icon: <SiGit /> },
+                      { name: "AWS", icon: <SiAmazon /> },
+                      { name: "MongoDB", icon: <SiMongodb /> },
+                      { name: "PostgreSQL", icon: <SiPostgresql /> },
+                      { name: "Docker", icon: <SiDocker /> },
+                      { name: "Linux", icon: <SiLinux /> },
+                      { name: "Jupyter", icon: <SiJupyter /> }
+                    ].map((skill) => (
+                      <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
+                        <span className="text-[#D4AF37]">{skill.icon}</span>
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Frameworks & Libraries */}
+                <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                  <h2 className="text-2xl font-bold text-white mb-4">Frameworks & Libraries</h2>
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    {[
+                      { name: "React.js", icon: <SiReact /> },
+                      { name: "Next.js", icon: <SiNextdotjs /> },
+                      { name: "Node.js", icon: <SiNodedotjs /> },
+                      { name: "PyTorch", icon: <SiPytorch /> },
+                      { name: "TensorFlow", icon: <SiTensorflow /> },
+                      { name: "Pandas", icon: <SiPandas /> },
+                      { name: "Scikit-learn", icon: <SiScikitlearn /> },
+                      { name: "Streamlit", icon: <SiStreamlit /> },
+                      { name: "Django", icon: <SiDjango /> },
+                      { name: "Flask", icon: <SiFlask /> }
+                    ].map((skill) => (
+                      <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
+                        <span className="text-[#D4AF37]">{skill.icon}</span>
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -419,7 +552,7 @@ export default function Home() {
 
         {/* EXPERIENCE SECTION */}
         <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
+          <div className="flex flex-col items-center justify-center w-full max-w-6xl"> {/* Changed from max-w-5xl to max-w-6xl */}
             <h1 className="text-5xl font-bold text-white mb-10">
               Experience
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
