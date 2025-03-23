@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira} from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle} from 'react-icons/si';
+import { BsHexagonFill } from 'react-icons/bs';
 import { isNullOrUndefined } from "util";
 
 interface ExperienceProps {
@@ -18,8 +19,6 @@ interface ExperienceProps {
 interface ProjectProps {
   title: string;
   description: string;
-  isOpen: boolean;
-  onClick: () => void;
 }
 
 const getTechIcon = (tech: string) => {
@@ -38,6 +37,7 @@ const getTechIcon = (tech: string) => {
     case 'mongodb':
       return <SiMongodb className={iconClasses} />;
     case 'postgresql':
+    case 'postgres':
       return <SiPostgresql className={iconClasses} />;
     case 'docker':
       return <SiDocker className={iconClasses} />;
@@ -50,8 +50,34 @@ const getTechIcon = (tech: string) => {
       return <SiPytorch className={iconClasses} />;
     case 'tensorflow':
       return <SiTensorflow className={iconClasses} />;
-    case 'Postgres':
-      return <SiPostgresql className={iconClasses} />;
+    case 'r':
+      return <SiR className={iconClasses} />;
+    case 'pandas':
+      return <SiPandas className={iconClasses} />;
+    case 'scikit-learn':
+      return <SiScikitlearn className={iconClasses} />;
+    case 'streamlit':
+      return <SiStreamlit className={iconClasses} />;
+    case 'transformers':
+      return <SiHuggingface className={iconClasses} />;
+    case 'ggplot2':
+      return <SiR className={iconClasses} />;
+    case 'tidyverse':
+      return <SiR className={iconClasses} />;
+    case 'scrapy':
+      return <SiPython className={iconClasses} />;
+    case 'nim':
+      return <SiNvidia className={iconClasses} />;
+    case 'bert':
+      return <SiGoogle className={iconClasses} />;
+    case 'yahoo-finance':
+      return <SiPython className={iconClasses} />;
+    case 'matplotlib':
+      return <SiPython className={iconClasses} />;
+    case 'polygonapi':
+      return <BsHexagonFill className={iconClasses} />;
+    case 'seaborn':
+      return <SiPython className={iconClasses} />;
     // Add more cases as needed
     default:
       return null;
@@ -59,6 +85,9 @@ const getTechIcon = (tech: string) => {
 };
 
 const Experience = ({ title, description, timeframe, location, logo, isOpen, onClick }: ExperienceProps) => {
+  // Split the title into company name and position
+  const [company, position] = title.split(" - ");
+
   return (
     <div className="group relative mb-8">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4AF37]/50 to-[#B8860B]/50 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
@@ -70,7 +99,7 @@ const Experience = ({ title, description, timeframe, location, logo, isOpen, onC
               <div className="relative w-16 h-16 rounded-full overflow-hidden">
                 <Image 
                   src={logo} 
-                  alt={`${title} logo`} 
+                  alt={`${company} logo`} 
                   fill
                   className="object-contain"
                 />
@@ -79,8 +108,11 @@ const Experience = ({ title, description, timeframe, location, logo, isOpen, onC
 
             {/* Content */}
             <div className="flex-grow">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <h3 className="text-xl font-bold text-white">{title}</h3>
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                <div className="flex flex-col">
+                  <h3 className="text-2xl font-bold text-white">{company}</h3>
+                  <p className="text-lg font-normal text-[#D4AF37] mt-1">{position}</p>
+                </div>
                 <div className="text-right mt-2 md:mt-0">
                   <p className="text-[#D4AF37] text-base">{timeframe}</p>
                   <p className="text-white/60 text-base">{location}</p>
@@ -103,61 +135,37 @@ const Experience = ({ title, description, timeframe, location, logo, isOpen, onC
   );
 };
 
-const Project = ({ title, description, isOpen, onClick }: ProjectProps) => {
+const Project = ({ title, description }: ProjectProps) => {
   const [titleText, techsText] = title.split(/\s*\((.*?)\)/);
   const technologies = techsText?.split(', ') || [];
 
   return (
-    <div 
-      className={`group bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg cursor-pointer transition-all duration-1000 ease-in-out hover:border-[#D4AF37]/40 ${
-        isOpen 
-          ? 'md:col-span-2 lg:col-span-2 row-span-2 scale-100 z-10' 
-          : 'transform-gpu hover:scale-[1.02] scale-100'
-      }`}
-      onClick={onClick}
-    >
-      <div className={`p-6 h-full flex flex-col transition-all duration-700 ease-out ${
-        isOpen ? 'gap-6' : 'gap-3'
-      }`}>
-        <h3 className="text-xl font-bold text-white transition-transform duration-500">
+    <div className="group relative bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg hover:border-[#D4AF37]/40 transition-all duration-500 ease-in-out">
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4AF37]/50 to-[#B8860B]/50 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
+      <div className="relative p-6 h-full flex flex-col gap-4">
+        <h3 className="text-xl font-bold text-white">
           {titleText}
         </h3>
         
-        <div className="flex-grow overflow-hidden">
-          <p className={`text-white/90 transition-all duration-700 ease-in-out ${
-            isOpen 
-              ? 'opacity-100 max-h-[500px] transform-gpu translate-y-0' 
-              : 'line-clamp-2 opacity-90 transform-gpu translate-y-0'
-          }`}>
+        <div className="flex-grow">
+          <p className="text-white/90">
             {description}
           </p>
         </div>
         
-        <div className={`flex flex-wrap gap-2 transition-all duration-500 ease-out ${
-          isOpen 
-            ? 'opacity-100 transform-gpu translate-y-0' 
-            : 'opacity-90 transform-gpu translate-y-0'
-        }`}>
-          {(isOpen ? technologies : technologies.slice(0, 3)).map((tech) => (
+        <div className="flex flex-wrap gap-2">
+          {technologies.map((tech, index) => (
             <div 
               key={tech} 
-              className={`flex items-center gap-2 bg-[#D4AF37]/10 rounded-full border border-[#D4AF37]/20 transition-all duration-500 ${
-                isOpen ? 'px-4 py-2 opacity-100' : 'px-3 py-1 opacity-90'
-              }`}
+              className="flex items-center gap-2 bg-[#D4AF37]/10 px-3 py-1 rounded-full border border-[#D4AF37]/20"
+              style={{
+                animation: `fadeSlideIn 500ms ${index * 50}ms ease-out forwards`
+              }}
             >
               {getTechIcon(tech)}
-              <span className={`text-white/90 transition-all duration-500 ${
-                isOpen ? 'text-sm' : 'text-xs'
-              }`}>
-                {tech}
-              </span>
+              <span className="text-white/90 text-xs">{tech}</span>
             </div>
           ))}
-          {!isOpen && technologies.length > 3 && (
-            <span className="text-white/60 text-xs px-2 py-1 transition-opacity duration-300">
-              +{technologies.length - 3} more
-            </span>
-          )}
         </div>
       </div>
     </div>
@@ -231,7 +239,7 @@ export default function Home() {
 
   const projects = [
     { 
-      title: "GT Chatbot (PostegreSQL, Docker, ReactJS, Python, Scrapy, RAG)",
+      title: "GT Chatbot (PostgreSQL, Docker, ReactJS, Python, Scrapy)",
       description: "Created a RAG-powered chatbot to help Georgia Tech students find information related to classes, clubs, or anything campus-related! Worked with NVIDIA and AI@GT to complete this project." 
     },
     { 
@@ -299,6 +307,7 @@ export default function Home() {
       <div className="relative z-10">
         {/* HOME SECTION */}
         <section id="home" className="min-h-screen flex items-center justify-center px-4">
+          <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#D4AF37]/20 to-transparent"></div>
           <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-16 px-10">
             {/* PROFILE PICTURE WITH ORBITAL RINGS */}
             <div className="relative w-80 h-80 md:w-[22rem] md:h-[22rem] group">
@@ -348,6 +357,12 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <div className="fixed top-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="fixed top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
+          <div className="fixed bottom-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"></div>
+          <div className="fixed bottom-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+          <div className="fixed top-1/3 left-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[80px] animate-float"></div>
+          <div className="fixed bottom-1/3 right-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[80px] animate-float-delayed"></div>
         </section>
 
         {/* ABOUT SECTION */}
@@ -436,8 +451,6 @@ export default function Home() {
                   key={index}
                   title={project.title}
                   description={project.description}
-                  isOpen={openProject === index}
-                  onClick={() => setOpenProject(openProject === index ? null : index)}
                 />
               ))}
             </div>
