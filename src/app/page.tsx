@@ -339,7 +339,7 @@ export default function Home() {
               {/* BUTTONS */}
               <div className="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
                 <a 
-                  href="/Soham_Resume.pdf" 
+                  href="/SohamGResume.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative px-8 py-4 bg-[#D4AF37] text-black rounded-lg text-lg font-medium overflow-hidden transition-all hover:shadow-lg hover:shadow-[#D4AF37]/20"
