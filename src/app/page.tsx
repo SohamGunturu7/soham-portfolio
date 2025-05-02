@@ -319,7 +319,12 @@ export default function Home() {
         <button onClick={() => scrollToSection('projects')} className="hover:text-gray-300 transition-colors">Projects</button>
         <button onClick={() => scrollToSection('skills')} className="hover:text-gray-300 transition-colors">Skills</button>
         <button onClick={() => scrollToSection('experience')} className="hover:text-gray-300 transition-colors">Experience</button>
-        <button onClick={() => scrollToSection('contact')} className="hover:text-gray-300 transition-colors">Contact Me</button>
+        <button 
+          onClick={() => scrollToSection('contact')}
+          className="hover:text-gray-300 transition-colors"
+        >
+          Contact Me
+        </button>
       </nav>
 
       {/* ANIMATED BACKGROUND */}
