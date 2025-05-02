@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle} from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox } from 'react-icons/si';
 import { BsHexagonFill } from 'react-icons/bs';
 
 interface ExperienceProps {
@@ -18,6 +18,8 @@ interface ExperienceProps {
 interface ProjectProps {
   title: string;
   description: string;
+  isMain?: boolean;
+  githubLink?: string;
 }
 
 const getTechIcon = (tech: string) => {
@@ -77,6 +79,16 @@ const getTechIcon = (tech: string) => {
       return <BsHexagonFill className={iconClasses} />;
     case 'seaborn':
       return <SiPython className={iconClasses} />;
+    case 'django':
+      return <SiDjango className={iconClasses} />;
+    case 'gemini':
+      return <SiGoogle className={iconClasses} />;
+    case 'html':
+      return <SiHtml5 className={iconClasses} />;
+    case 'css':
+      return <SiCss3 className={iconClasses} />;
+    case 'mapbox':
+      return <SiMapbox className={iconClasses} />;
     // Add more cases as needed
     default:
       return null;
@@ -84,49 +96,43 @@ const getTechIcon = (tech: string) => {
 };
 
 const Experience = ({ title, description, timeframe, location, logo, isOpen, onClick }: ExperienceProps) => {
-  // Split the title into company name and position
   const [company, position] = title.split(" - ");
 
   return (
-    <div className="group relative mb-8">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4AF37]/50 to-[#B8860B]/50 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
-      <div className="relative w-full bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg cursor-pointer transition-all duration-500 group-hover:border-[#D4AF37]/40" onClick={onClick}>
-        <div className="p-6">
-          <div className="flex flex-col md:flex-row gap-6">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                <Image 
-                  src={logo} 
-                  alt={`${company} logo`} 
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
+    <div className="group relative w-full bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 mb-6 hover:border-[#D4AF37]/40 transition-all duration-300">
+      <div className="flex flex-col md:flex-row items-start gap-6">
+        {/* Logo */}
+        <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border border-[#D4AF37]/20">
+          <Image 
+            src={logo} 
+            alt={`${company} logo`} 
+            width={64}
+            height={64}
+            className="object-cover w-full h-full"
+          />
+        </div>
 
-            {/* Content */}
-            <div className="flex-grow">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                <div className="flex flex-col">
-                  <h3 className="text-2xl font-bold text-white">{company}</h3>
-                  <p className="text-lg font-normal text-[#D4AF37] mt-1">{position}</p>
-                </div>
-                <div className="text-right mt-2 md:mt-0">
-                  <p className="text-[#D4AF37] text-base">{timeframe}</p>
-                  <p className="text-white/60 text-base">{location}</p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}>
-                <ul className="list-disc space-y-2 text-white/90 mt-4 text-base pl-0">
-                  {description.map((item, idx) => (
-                    <li key={idx} className="ml-4">{item}</li>
-                  ))}
-                </ul>
-              </div>
+        {/* Content */}
+        <div className="flex-grow">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <div>
+              <h3 className="text-2xl font-bold text-white">{company}</h3>
+              <p className="text-lg text-[#D4AF37]">{position}</p>
             </div>
+            <div className="flex flex-col items-end">
+              <p className="text-white/80">{timeframe}</p>
+              <p className="text-white/60">{location}</p>
+            </div>
+          </div>
+          
+          <div className="mt-4">
+            <ul className="list-disc space-y-2 text-white/80 pl-4">
+              {description.map((item, idx) => (
+                <li key={idx} className="leading-relaxed">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
@@ -134,12 +140,14 @@ const Experience = ({ title, description, timeframe, location, logo, isOpen, onC
   );
 };
 
-const Project = ({ title, description }: ProjectProps) => {
+const Project = ({ title, description, isMain, githubLink }: ProjectProps) => {
   const [titleText, techsText] = title.split(/\s*\((.*?)\)/);
   const technologies = techsText?.split(', ') || [];
 
   return (
-    <div className="group relative bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg hover:border-[#D4AF37]/40 transition-all duration-500 ease-in-out">
+    <div className={`group relative bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg hover:border-[#D4AF37]/40 transition-all duration-500 ease-in-out ${
+      isMain ? 'col-span-1 md:col-span-2 lg:col-span-2' : 'col-span-1'
+    }`}>
       <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4AF37]/50 to-[#B8860B]/50 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
       <div className="relative p-6 h-full flex flex-col gap-4">
         <h3 className="text-xl font-bold text-white">
@@ -166,6 +174,18 @@ const Project = ({ title, description }: ProjectProps) => {
             </div>
           ))}
         </div>
+
+        {isMain && githubLink && (
+          <a
+            href={githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-2 bg-[#D4AF37]/20 text-white px-4 py-2 rounded-lg border border-[#D4AF37]/20 hover:bg-[#D4AF37]/30 transition-colors"
+          >
+            <FaGithub className="text-[#D4AF37]" />
+            View on GitHub
+          </a>
+        )}
       </div>
     </div>
   );
@@ -180,7 +200,6 @@ export default function Home() {
   };
 
   const [openExperience, setOpenExperience] = useState<number | null>(null);
-  //const [openProject, setOpenProject] = useState<number | null>(null);
 
   const experiences = [
     { 
@@ -191,11 +210,22 @@ export default function Home() {
       logo: "/amazon.jpg"
     },
     { 
+      title: "Georgia Tech College of Computing - Undergraduate Researcher", 
+      description: [
+        "Researching quantum physics phenomena using SAT solvers & Computer Algebra Systems for mathematical modeling.",
+        "Analyzing Ramsey's Problem and GHZ theorems through combinatorial mathematics and algorithmic approaches.",
+        "Developing computational solutions for the Kochen-Specker Problem in quantum mechanics applications."
+      ], 
+      timeframe: "April 2025 - Present", 
+      location: "Atlanta, GA",
+      logo: "/gt.jpeg"
+    },
+    { 
       title: "GROWER Lab - Research Intern", 
       description: [
-        "Researched power outages and grid resilience by creating a data pipeline.",
-        "Gathered and analyzed data using AWS and Python to identify patterns and trends.",
-        "Collaborated with team members to publish findings and present results."
+        "Engineered data pipelines to analyze power grid resilience using AWS and Python for large-scale data processing.",
+        "Implemented machine learning models to predict outage patterns and identify infrastructure vulnerabilities.",
+        "Developed visualization tools and presented research findings to stakeholders for infrastructure improvements."
       ], 
       timeframe: "Aug 2024 - Current", 
       location: "Atlanta, GA",
@@ -204,9 +234,9 @@ export default function Home() {
     { 
       title: "Nationwide Children's Hospital - Data Intern", 
       description: [
-        "Identified differences in tumors through comprehensive data analysis.",
-        "Performed correlation studies to find patterns and relationships in the data.",
-        "Improved model accuracy by 30% using advanced data analysis techniques."
+        "Designed machine learning algorithms to analyze tumor characteristics and identify pattern correlations.",
+        "Enhanced diagnostic model accuracy by 30% through implementation of advanced statistical techniques.",
+        "Created comprehensive data visualization tools to communicate findings to medical professionals."
       ], 
       timeframe: "Jun 2023 - Dec 2023", 
       location: "Columbus, OH",
@@ -215,9 +245,9 @@ export default function Home() {
     { 
       title: "Harvard University - Data Intern", 
       description: [
-        "Researched societal trends and their impacts on various demographics.",
-        "Assisted over 100 students with data analytics projects and assignments.",
-        "Optimized CI/CD pipeline to improve efficiency and reduce deployment times."
+        "Analyzed demographic trends using statistical methods to identify significant societal patterns.",
+        "Mentored 100+ students in data analytics projects while optimizing departmental CI/CD pipelines.",
+        "Reduced deployment times by 40% through implementation of automated testing and deployment systems."
       ], 
       timeframe: "Jun 2022 - Aug 2022", 
       location: "Cambridge, MA",
@@ -226,9 +256,9 @@ export default function Home() {
     { 
       title: "Ohio Supercomputer Center - Project Specialist", 
       description: [
-        "Conducted experiments on choice-making behaviors using simulation models.",
-        "Ran simulations to model population dynamics and predict future trends.",
-        "Created visualizations to aid in decision-making and present findings."
+        "Developed simulation models to analyze human choice-making behavior using high-performance computing.",
+        "Created predictive algorithms to extrapolate individual patterns to population-level insights.",
+        "Built interactive data visualizations to present research findings to psychology department faculty."
       ], 
       timeframe: "Jun 2022 - Jul 2022", 
       location: "Columbus, OH",
@@ -237,6 +267,10 @@ export default function Home() {
   ];
 
   const projects = [
+    { 
+      title: "Travel App (Python, Django, JavaScript, Gemini, HTML, CSS, MapBox)",
+      description: "Built an AI-powered trip planner that leverages Google Gemini LLM to create intelligent, cost-aware itineraries with real-time adaptations. Features include interactive map visualization using MapBox, multi-role user management, and smart recommendations for accommodations and activities using hybrid ML algorithms."
+    },
     { 
       title: "GT Chatbot (PostgreSQL, Docker, ReactJS, Python, Scrapy)",
       description: "Created a RAG-powered chatbot to help Georgia Tech students find information related to classes, clubs, or anything campus-related! Worked with NVIDIA and AI@GT to complete this project." 
@@ -332,7 +366,7 @@ export default function Home() {
                   Soham Gunturu
                 </h1>
                 <h2 className="text-2xl md:text-3xl font-semibold text-white/80">
-                  CS @ Georgia Tech
+                  CS @ Georgia Tech | SDE @ Amazon
                 </h2>
               </div>
 
@@ -444,12 +478,28 @@ export default function Home() {
               Projects
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6 w-full">
-              {projects.map((project, index) => (
+            
+            {/* Featured Projects */}
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full mb-12">
+              {[
+                { ...projects[0], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
+                { ...projects[2], isMain: true, githubLink: "https://github.com/SohamGunturu7/SpeakEasy" },
+                { ...projects[4], isMain: true, githubLink: "https://github.com/SohamGunturu7/tgt-etf-vol-arbitrage" }
+              ].map((project, index) => (
                 <Project
                   key={index}
-                  title={project.title}
-                  description={project.description}
+                  {...project}
+                />
+              ))}
+            </div>
+
+            {/* Other Projects */}
+            <h2 className="text-3xl font-bold text-white mb-8 mt-12">Other Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+              {[projects[1], projects[3], projects[5], projects[6]].map((project, index) => (
+                <Project
+                  key={index}
+                  {...project}
                 />
               ))}
             </div>
@@ -564,23 +614,25 @@ export default function Home() {
 
         {/* EXPERIENCE SECTION */}
         <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="flex flex-col items-center justify-center w-full max-w-6xl"> {/* Changed from max-w-5xl to max-w-6xl */}
-            <h1 className="text-5xl font-bold text-white mb-10">
+          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
+            <h1 className="text-5xl font-bold text-white mb-12">
               Experience
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
-            {experiences.map((exp, index) => (
-              <Experience
-                key={index}
-                title={exp.title}
-                description={exp.description}
-                timeframe={exp.timeframe}
-                location={exp.location}
-                logo={exp.logo}
-                isOpen={openExperience === index}
-                onClick={() => setOpenExperience(openExperience === index ? null : index)}
-              />
-            ))}
+            <div className="w-full space-y-6">
+              {experiences.map((exp, index) => (
+                <Experience
+                  key={index}
+                  title={exp.title}
+                  description={exp.description}
+                  timeframe={exp.timeframe}
+                  location={exp.location}
+                  logo={exp.logo}
+                  isOpen={true} // Always show description
+                  onClick={() => {}} // Remove click handler since we're always showing content
+                />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -594,7 +646,7 @@ export default function Home() {
                 className="flex flex-col items-center group"
               >
                 <FaEnvelope className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
-                <p className="text-white text-xl group-hover:text-gray-300">sgunturu30@gatech.edu</p>
+                <p className="text-white text-xl group-hover:text-gray-300">Email</p>
               </a>
 
               <a 
