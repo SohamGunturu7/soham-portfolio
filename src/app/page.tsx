@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
 import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox } from 'react-icons/si';
@@ -11,8 +11,6 @@ interface ExperienceProps {
   timeframe: string;
   location: string;
   logo: string;
-  isOpen: boolean;
-  onClick: () => void;
 }
 
 interface ProjectProps {
@@ -95,7 +93,7 @@ const getTechIcon = (tech: string) => {
   }
 };
 
-const Experience = ({ title, description, timeframe, location, logo, isOpen, onClick }: ExperienceProps) => {
+const Experience = ({ title, description, timeframe, location, logo }: ExperienceProps) => {
   const [company, position] = title.split(" - ");
 
   return (
@@ -198,8 +196,6 @@ export default function Home() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const [openExperience, setOpenExperience] = useState<number | null>(null);
 
   const experiences = [
     { 
@@ -628,8 +624,6 @@ export default function Home() {
                   timeframe={exp.timeframe}
                   location={exp.location}
                   logo={exp.logo}
-                  isOpen={true} // Always show description
-                  onClick={() => {}} // Remove click handler since we're always showing content
                 />
               ))}
             </div>
