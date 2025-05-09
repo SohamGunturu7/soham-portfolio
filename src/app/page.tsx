@@ -411,7 +411,7 @@ export default function Home() {
               {/* TEXT SECTION */}
               <div className="w-full md:w-3/5 text-left px-6">
                 <p className="text-md text-white/90 leading-relaxed">
-                  Hey! I&apos;m Soham Gunturu, a Computer Science student at Georgia Tech. I have a passion for software development, AI, and data science. This summer, I&apos;ll be joining Amazon as a Software Development Engineer Intern in Tempe, AZ. I&apos;m also interested in startup culture, so feel free to reach out!
+                  Hey! I&apos;m Soham Gunturu, a Junior Computer Science student at Georgia Tech. I have a passion for software development, AI, and data science. This summer, I&apos;ll be joining Amazon as a Software Development Engineer Intern in Tempe, AZ. I&apos;m also interested in startup culture, so feel free to reach out!
                 </p>
                 <p className="mt-4 text-md text-white/90 leading-relaxed">
                   I also have a passion for service. On campus, I participate in HexLabs, designing hackathons for under-resourced youth in Atlanta. Back in Ohio, I led DublinTOP Inc, a non-profit supporting youth through education and tennis. As Executive Director, I impacted over 1000 kids in 3+ states. I aim to find the intersection of technology and service to create meaningful impact throughout my career and beyond!
