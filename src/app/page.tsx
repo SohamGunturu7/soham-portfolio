@@ -295,6 +295,17 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-black overflow-x-hidden">
+      {/* Logo in top left */}
+      <div className="absolute top-6 left-6 z-50">
+        <Image
+          src="/favicon.png"
+          alt="Logo"
+          width={64}
+          height={64}
+          className="rounded-full shadow-lg"
+        />
+      </div>
+
       {/* Enhanced background layers */}
       <div className="aurora-bg"></div>
       <div className="stars"></div>
