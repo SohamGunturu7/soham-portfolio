@@ -285,7 +285,7 @@ export default function Home() {
     },
     { 
       title: "RoboInvesting (Python, PolygonAPI, Pandas, Matplotlib, ReactJS)",
-      description: "Reimagines financial planning by using an AI to customize a user's investment portfolio. Based off a user's long-term goals, the AI will guide the conversation and create a comprehensive finanical plan!" 
+      description: "Reimagines financial planning by using an AI to customize a user's investment portfolio. Based off a user's long-term goals, AI will guide the conversation and create a comprehensive finanical plan!" 
     },
     { 
       title: "Choice Analysis (R, GGPlot2, Tidyverse)",
