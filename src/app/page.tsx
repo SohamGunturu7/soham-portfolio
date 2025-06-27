@@ -289,7 +289,7 @@ export default function Home() {
     },
     { 
       title: "Choice Analysis (R, GGPlot2, Tidyverse)",
-      description: "Worked with the Ohio Supercomputer Center to analyze human decision-making based on a number of factors. Then, using ML to simulate these results at the population level, revealing new psychological findings in choice." 
+      description: "Worked with the Ohio Supercomputer Center to analyze human decision-making based on a variety of factors. Then, using ML to simulate these results at the population level, revealing new psychological findings in choice." 
     },
   ];
 
