@@ -2,7 +2,7 @@
 import React from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox } from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress } from 'react-icons/si';
 import { BsHexagonFill } from 'react-icons/bs';
 
 interface ExperienceProps {
@@ -82,12 +82,22 @@ const getTechIcon = (tech: string) => {
     case 'gemini':
       return <SiGoogle className={iconClasses} />;
     case 'html':
+    case 'html/css':
+    case 'html5':
       return <SiHtml5 className={iconClasses} />;
     case 'css':
+    case 'css3':
       return <SiCss3 className={iconClasses} />;
     case 'mapbox':
       return <SiMapbox className={iconClasses} />;
-    // Add more cases as needed
+    case 'firebase':
+      return <SiFirebase className={iconClasses} />;
+    case 'nodejs':
+    case 'node.js':
+      return <SiNodedotjs className={iconClasses} />;
+    case 'expressjs':
+    case 'express':
+      return <SiExpress className={iconClasses} />;
     default:
       return null;
   }
@@ -263,6 +273,10 @@ export default function Home() {
   ];
 
   const projects = [
+    {
+      title: "GT Marketplace (Typescript, ReactJS, Firebase, NodeJS, ExpressJS, HTML/CSS, Python)",
+      description: "Developed a full-stack web application for Georgia Tech students to buy and sell items. Features include user authentication, real-time chat, and a responsive design. Utilized Firebase for backend services and ReactJS for the frontend."
+    },
     { 
       title: "Travel App (Python, Django, JavaScript, Gemini, HTML, CSS, MapBox)",
       description: "Built an AI-powered trip planner that leverages Google Gemini LLM to create intelligent, cost-aware itineraries with real-time adaptations. Features include interactive map visualization using MapBox, multi-role user management, and smart recommendations for accommodations and activities using hybrid ML algorithms."
@@ -492,11 +506,12 @@ export default function Home() {
             </h1>
             
             {/* Featured Projects */}
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mb-12">
               {[
-                { ...projects[0], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
-                { ...projects[2], isMain: true, githubLink: "https://github.com/SohamGunturu7/SpeakEasy" },
-                { ...projects[4], isMain: true, githubLink: "https://github.com/SohamGunturu7/tgt-etf-vol-arbitrage" }
+                { ...projects[1], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
+                { ...projects[3], isMain: true, githubLink: "https://github.com/SohamGunturu7/SpeakEasy" },
+                { ...projects[0], isMain: true, githubLink: "https://github.com/SohamGunturu7/GTMarketPlace" },
+                { ...projects[5], isMain:true, githubLink: "https://github.com/SohamGunturu7/tgt-etf-vol-arbitrage"}
               ].map((project, index) => (
                 <Project
                   key={index}
@@ -508,7 +523,7 @@ export default function Home() {
             {/* Other Projects */}
             <h2 className="text-3xl font-bold text-white mb-8 mt-12">Other Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-              {[projects[1], projects[3], projects[5], projects[6]].map((project, index) => (
+              {[projects[2], projects[4], projects[6], projects[7]].map((project, index) => (
                 <Project
                   key={index}
                   {...project}
@@ -573,53 +588,61 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-                {/* Tools & Platforms */}
-                <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
-                  <h2 className="text-2xl font-bold text-white mb-4">Tools & Platforms</h2>
-                  <div className="flex flex-wrap gap-3 justify-center">
-                    {[
-                      { name: "Git", icon: <SiGit /> },
-                      { name: "AWS", icon: <SiAmazon /> },
-                      { name: "MongoDB", icon: <SiMongodb /> },
-                      { name: "PostgreSQL", icon: <SiPostgresql /> },
-                      { name: "Docker", icon: <SiDocker /> },
-                      { name: "Linux", icon: <SiLinux /> },
-                      { name: "Jupyter", icon: <SiJupyter /> }
-                    ].map((skill) => (
-                      <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
-                        <span className="text-[#D4AF37]">{skill.icon}</span>
-                        {skill.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Frameworks & Libraries */}
-                <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
-                  <h2 className="text-2xl font-bold text-white mb-4">Frameworks & Libraries</h2>
-                  <div className="flex flex-wrap gap-3 justify-center">
-                    {[
-                      { name: "React.js", icon: <SiReact /> },
-                      { name: "Next.js", icon: <SiNextdotjs /> },
-                      { name: "Node.js", icon: <SiNodedotjs /> },
-                      { name: "PyTorch", icon: <SiPytorch /> },
-                      { name: "TensorFlow", icon: <SiTensorflow /> },
-                      { name: "Pandas", icon: <SiPandas /> },
-                      { name: "Scikit-learn", icon: <SiScikitlearn /> },
-                      { name: "Streamlit", icon: <SiStreamlit /> },
-                      { name: "Django", icon: <SiDjango /> },
-                      { name: "Flask", icon: <SiFlask /> }
-                    ].map((skill) => (
-                      <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
-                        <span className="text-[#D4AF37]">{skill.icon}</span>
-                        {skill.name}
-                      </span>
-                    ))}
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+              {/* Tools & Platforms */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-2xl font-bold text-white mb-4">Tools & Platforms</h2>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {[
+                    { name: "Git", icon: <SiGit /> },
+                    { name: "AWS", icon: <SiAmazon /> },
+                    { name: "MongoDB", icon: <SiMongodb /> },
+                    { name: "PostgreSQL", icon: <SiPostgresql /> },
+                    { name: "Docker", icon: <SiDocker /> },
+                    { name: "Linux", icon: <SiLinux /> },
+                    { name: "Jupyter", icon: <SiJupyter /> },
+                    { name: "Firebase", icon: <SiFirebase /> },
+                  ].map((skill) => (
+                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
+                      <span className="text-[#D4AF37]">{skill.icon}</span>
+                      {skill.name}
+                    </span>
+                  ))}
                 </div>
               </div>
+
+              {/* Frameworks & Libraries */}
+              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-2xl font-bold text-white mb-4">Frameworks & Libraries</h2>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {[
+                    { name: "React.js", icon: <SiReact /> },
+                    { name: "Next.js", icon: <SiNextdotjs /> },
+                    { name: "Node.js", icon: <SiNodedotjs /> },
+                    { name: "Express.js", icon: <SiExpress /> },
+                    { name: "Django", icon: <SiDjango /> },
+                    { name: "Flask", icon: <SiFlask /> },
+                    { name: "Pandas", icon: <SiPandas /> },
+                    { name: "Scikit-learn", icon: <SiScikitlearn /> },
+                    { name: "Streamlit", icon: <SiStreamlit /> },
+                    { name: "PyTorch", icon: <SiPytorch /> },
+                    { name: "TensorFlow", icon: <SiTensorflow /> },
+                    { name: "Seaborn", icon: <SiPython /> },
+                    { name: "GGPlot2", icon: <SiR /> },
+                    { name: "Tidyverse", icon: <SiR /> },
+                    { name: "Transformers", icon: <SiHuggingface /> },
+                    { name: "Bert", icon: <SiGoogle /> },
+                    { name: "Scrapy", icon: <SiPython /> },
+                    { name: "Matplotlib", icon: <SiPython /> }
+                  ].map((skill) => (
+                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
+                      <span className="text-[#D4AF37]">{skill.icon}</span>
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </section>
