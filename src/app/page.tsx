@@ -2,7 +2,7 @@
 import React from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress } from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress, SiNumpy } from 'react-icons/si';
 import { BsHexagonFill } from 'react-icons/bs';
 
 interface ExperienceProps {
@@ -305,6 +305,9 @@ export default function Home() {
       title: "Choice Analysis (R, GGPlot2, Tidyverse)",
       description: "Worked with the Ohio Supercomputer Center to analyze human decision-making based on a variety of factors. Then, using ML to simulate these results at the population level, revealing new psychological findings in choice." 
     },
+    {title: "DeepQuote (C++, Python, PyBind, PyTorch, Gymnasium, Numpy, Stable-Baseline3)",
+      description: "Built a high-frequency trading simulator that replicates real market conditions using a live order book, processing over 10,000 orders per second with detailed order flow and matching mechanics. It supports reinforcement learning agents operating in an 18-dimensional state space, enabling sophisticated trading strategies and real-time PnL tracking."
+    },
   ];
 
   return (
@@ -511,7 +514,7 @@ export default function Home() {
                 { ...projects[1], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
                 { ...projects[3], isMain: true, githubLink: "https://github.com/SohamGunturu7/SpeakEasy" },
                 { ...projects[0], isMain: true, githubLink: "https://github.com/SohamGunturu7/GTMarketPlace" },
-                { ...projects[5], isMain:true, githubLink: "https://github.com/SohamGunturu7/tgt-etf-vol-arbitrage"}
+                { ...projects[8], isMain:true, githubLink: "https://github.com/SohamGunturu7/deepquote"}
               ].map((project, index) => (
                 <Project
                   key={index}
@@ -522,8 +525,8 @@ export default function Home() {
 
             {/* Other Projects */}
             <h2 className="text-3xl font-bold text-white mb-8 mt-12">Other Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-              {[projects[2], projects[4], projects[6], projects[7]].map((project, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-6 w-full">
+              {[projects[2], projects[4], projects[6], projects[7], projects[5]].map((project, index) => (
                 <Project
                   key={index}
                   {...project}
