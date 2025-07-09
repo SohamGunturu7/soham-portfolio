@@ -98,6 +98,16 @@ const getTechIcon = (tech: string) => {
     case 'expressjs':
     case 'express':
       return <SiExpress className={iconClasses} />;
+    case 'c++':
+      return <SiCplusplus className={iconClasses} />;
+    case 'pybind':
+      return <SiPython className={iconClasses} />; // fallback to Python icon
+    case 'gymnasium':
+      return <SiPython className={iconClasses} />; // fallback to Python icon
+    case 'numpy':
+      return <SiNumpy className={iconClasses} />;
+    case 'stable-baseline3':
+      return <SiPython className={iconClasses} />; // fallback to Python icon
     default:
       return null;
   }
