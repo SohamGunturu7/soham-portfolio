@@ -485,7 +485,7 @@ export default function Home() {
                   <div className="pr-16"> {/* Add padding-right to prevent text overlap with logo */}
                     <h3 className="text-2xl font-bold">Georgia Tech</h3>
                     <p className="mt-2 text-md"><strong>BS in Computer Science</strong></p>
-                    <p className="mt-2 text-md"><strong>Expected Graduation:</strong> December 2026</p>
+                    <p className="mt-2 text-md"><strong>Expected Graduation:</strong> May 2027</p>
                     <p className="mt-2 text-md"><strong>Key Courses:</strong> Data Structures & Algorithms, Object-Oriented Programming, Discrete Math, Linear Algebra, Computer Architecture, Objects and Design</p>
                   </div>
                 </div>
