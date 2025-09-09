@@ -220,7 +220,11 @@ export default function Home() {
   const experiences = [
     { 
       title: "Amazon - Incoming SDE Intern", 
-      description: ["Incoming Summer 2025 Software Development Engineer Intern in Tempe, AZ"], 
+      description: [
+        "Built internal tooling using Java, React, and AWS to find and resolve conflicting product offers for the AmazonCustom team, reducing error diagnosing time by 20% and improving resolution scalability.",
+        "Developed a feature to enable sellers to download sample fulfillment zip files from buyer previews through redux manipulation and new backend functionality, inducing a 22% increase in seller adoption of the Buyer Preview feature and overall seller experience.",
+        "Pushed feature to production."
+      ],
       timeframe: "May 2025 - Aug 2025", 
       location: "Tempe, AZ",
       logo: "/amazon.jpg"
