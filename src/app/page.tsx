@@ -218,8 +218,28 @@ export default function Home() {
   };
 
   const experiences = [
+    {
+      title: "Databricks - Software Engineer Intern",
+      description: [
+        "Summer 2026"
+      ],
+      timeframe: "May 2026 - Aug 2026",
+      location: "Bellevue, WA",
+      logo: "/databricks.jpeg"
+    },
+    {
+      title: "Microsoft - Product Fellow",
+      description: [
+        "Created a product roadmap for an M365 tool designed to provide expedited resolution times for escalatons.",
+        "Developed an intelligent routing system with AI-generated documentation, HITL, and semantic search capabilities.",
+        "Worked under Product @ GT and Microsoft Atlanta!"
+      ],
+      timeframe: "Sep 2025 - Jan 2026",
+      location: "Atlanta, GA",
+      logo: "/microsoft.webp"
+    },
     { 
-      title: "Amazon - Incoming SDE Intern", 
+      title: "Amazon - Software Development Engineer Intern", 
       description: [
         "Built internal tooling using Java, React, and AWS to find and resolve conflicting product offers for the AmazonCustom team, reducing error diagnosing time by 20% and improving resolution scalability.",
         "Developed a feature to enable sellers to download sample fulfillment zip files from buyer previews through redux manipulation and new backend functionality, inducing a 22% increase in seller adoption of the Buyer Preview feature and overall seller experience.",
@@ -409,14 +429,14 @@ export default function Home() {
                   Soham Gunturu
                 </h1>
                 <h2 className="text-2xl md:text-3xl font-semibold text-white/80">
-                  CS @ Georgia Tech | SDE @ Amazon
+                  CS @ Georgia Tech | Databricks, Amazon
                 </h2>
               </div>
 
               {/* BUTTONS */}
               <div className="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
                 <a 
-                  href="/SohamGResume.pdf" 
+                  href="/Soham_Resume.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative px-8 py-4 bg-[#D4AF37] text-black rounded-lg text-lg font-medium overflow-hidden transition-all hover:shadow-lg hover:shadow-[#D4AF37]/20"
