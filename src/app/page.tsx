@@ -219,15 +219,6 @@ export default function Home() {
 
   const experiences = [
     {
-      title: "Databricks - Software Engineer Intern",
-      description: [
-        "Summer 2026"
-      ],
-      timeframe: "May 2026 - Aug 2026",
-      location: "Bellevue, WA",
-      logo: "/databricks.jpeg"
-    },
-    {
       title: "Microsoft - Product Fellow",
       description: [
         "Created a product roadmap for an M365 tool designed to provide expedited resolution times for escalatons.",
@@ -429,7 +420,7 @@ export default function Home() {
                   Soham Gunturu
                 </h1>
                 <h2 className="text-2xl md:text-3xl font-semibold text-white/80">
-                  CS @ Georgia Tech | Databricks, Amazon
+                  CS @ Georgia Tech | Prev @ Amazon
                 </h2>
               </div>
 
