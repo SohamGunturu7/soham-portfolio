@@ -219,6 +219,15 @@ export default function Home() {
 
   const experiences = [
     {
+      title: "Databricks - Software Engineer Intern",
+      description: [
+        "Summer 2026"
+      ],
+      timeframe: "May 2026 - Aug 2026",
+      location: "Bellevue, WA",
+      logo: "/databricks.jpeg"
+    },
+    {
       title: "Microsoft - Product Fellow",
       description: [
         "Created a product roadmap for an M365 tool designed to provide expedited resolution times for escalatons.",
@@ -420,14 +429,14 @@ export default function Home() {
                   Soham Gunturu
                 </h1>
                 <h2 className="text-2xl md:text-3xl font-semibold text-white/80">
-                  CS @ Georgia Tech | Prev @ Amazon
+                  CS @ Georgia Tech | Databricks, Amazon
                 </h2>
               </div>
 
               {/* BUTTONS */}
               <div className="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
                 <a 
-                  href="/SohamGResume.pdf" 
+                  href="/Soham_Resume.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="group relative px-8 py-4 bg-[#D4AF37] text-black rounded-lg text-lg font-medium overflow-hidden transition-all hover:shadow-lg hover:shadow-[#D4AF37]/20"
