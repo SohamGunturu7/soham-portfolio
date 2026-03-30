@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { FaEnvelope, FaLinkedin, FaGithub, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaFileAlt } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiAmazon, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress, SiNumpy } from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress, SiNumpy, SiFastapi, SiRedux, SiSwift, SiAssemblyscript, SiSupabase, SiAmazonec2, SiAwslambda, SiAmazondynamodb, SiRedis, SiApachekafka } from 'react-icons/si';
 import { BsHexagonFill } from 'react-icons/bs';
 
 interface ExperienceProps {
@@ -117,8 +117,10 @@ const Experience = ({ title, description, timeframe, location, logo }: Experienc
   const [company, position] = title.split(" - ");
 
   return (
-    <div className="group relative w-full bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 mb-6 hover:border-[#D4AF37]/40 transition-all duration-300">
+    <div className="group relative w-full overflow-visible rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-7 shadow-[0_10px_60px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-[#D4AF37]/40">
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.18),transparent_45%)]" />
       <div className="flex flex-col md:flex-row items-start gap-6">
+        <div className="absolute left-0 top-7 hidden md:block h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-[#D4AF37] shadow-[0_0_14px_rgba(212,175,55,0.9)] ring-4 ring-[#D4AF37]/15" />
         {/* Logo */}
         <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border border-[#D4AF37]/20">
           <Image 
@@ -132,19 +134,19 @@ const Experience = ({ title, description, timeframe, location, logo }: Experienc
 
         {/* Content */}
         <div className="flex-grow">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-              <h3 className="text-2xl font-bold text-white">{company}</h3>
+              <h3 className="text-2xl font-bold text-white tracking-tight">{company}</h3>
               <p className="text-lg text-[#D4AF37]">{position}</p>
             </div>
-            <div className="flex flex-col items-end">
-              <p className="text-white/80">{timeframe}</p>
-              <p className="text-white/60">{location}</p>
+            <div className="flex flex-col items-start md:items-end">
+              <p className="rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/10 px-3 py-1 text-sm text-[#f3da88]">{timeframe}</p>
+              <p className="mt-2 text-white/60">{location}</p>
             </div>
           </div>
           
           <div className="mt-4">
-            <ul className="list-disc space-y-2 text-white/80 pl-4">
+            <ul className="list-disc space-y-2 text-white/85 pl-4">
               {description.map((item, idx) => (
                 <li key={idx} className="leading-relaxed">
                   {item}
@@ -163,17 +165,17 @@ const Project = ({ title, description, isMain, githubLink }: ProjectProps) => {
   const technologies = techsText?.split(', ') || [];
 
   return (
-    <div className={`group relative bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg shadow-lg hover:border-[#D4AF37]/40 transition-all duration-500 ease-in-out ${
+    <div className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_45px_rgba(0,0,0,0.32)] backdrop-blur-xl transition-all duration-500 ease-in-out hover:-translate-y-1 hover:border-[#D4AF37]/35 ${
       isMain ? 'col-span-1 md:col-span-2 lg:col-span-2' : 'col-span-1'
     }`}>
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4AF37]/50 to-[#B8860B]/50 rounded-lg opacity-0 group-hover:opacity-100 blur transition-all duration-500"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.18),transparent_55%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative p-6 h-full flex flex-col gap-4">
-        <h3 className="text-xl font-bold text-white">
+        <h3 className="text-xl font-bold text-white tracking-tight">
           {titleText}
         </h3>
         
         <div className="flex-grow">
-          <p className="text-white/90">
+          <p className="text-white/85 leading-relaxed">
             {description}
           </p>
         </div>
@@ -198,7 +200,7 @@ const Project = ({ title, description, isMain, githubLink }: ProjectProps) => {
             href={githubLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 bg-[#D4AF37]/20 text-white px-4 py-2 rounded-lg border border-[#D4AF37]/20 hover:bg-[#D4AF37]/30 transition-colors"
+            className="mt-4 inline-flex items-center gap-2 bg-[#D4AF37]/20 text-white px-4 py-2 rounded-xl border border-[#D4AF37]/20 hover:bg-[#D4AF37]/30 transition-colors"
           >
             <FaGithub className="text-[#D4AF37]" />
             View on GitHub
@@ -261,7 +263,7 @@ export default function Home() {
       logo: "/gt.jpeg"
     },
     { 
-      title: "GROWER Lab - Research Intern", 
+      title: "GROWER Lab - Data Engineer", 
       description: [
         "Engineered data pipelines to analyze power grid resilience using AWS and Python for large-scale data processing.",
         "Implemented machine learning models to predict outage patterns and identify infrastructure vulnerabilities.",
@@ -345,26 +347,26 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#050608] text-white">
       {/* Logo in top left */}
-      <div className="absolute top-6 left-6 z-50">
+      <button
+        onClick={() => scrollToSection('home')}
+        className="absolute top-6 left-6 z-50 rounded-full border border-white/10 bg-black/30 p-1.5 shadow-lg backdrop-blur-xl hover:border-[#D4AF37]/40 transition-colors"
+        aria-label="Go to home section"
+      >
         <Image
           src="/favicon.png"
           alt="Logo"
-          width={64}
-          height={64}
-          className="rounded-full shadow-lg"
+          width={56}
+          height={56}
+          className="rounded-full"
         />
-      </div>
+      </button>
 
       {/* Enhanced background layers */}
       <div className="aurora-bg"></div>
       <div className="stars"></div>
       <div className="noise-overlay"></div>
-      
-      {/* Remove or comment out the old background divs */}
-      {/* <div className="stellar-bg"></div> */}
-      {/* <div className="ambient-gradient"></div> */}
       
       {/* Keep the floating shapes but update their styling */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -375,36 +377,21 @@ export default function Home() {
       </div>
 
       {/* NAVIGATION BAR */}
-      <nav className="fixed top-5 right-10 flex space-x-6 text-lg font-medium text-white z-20">
-        <button onClick={() => scrollToSection('home')} className="hover:text-gray-300 transition-colors">Home</button>
-        <button onClick={() => scrollToSection('about')} className="hover:text-gray-300 transition-colors">About Me</button>
-        <button onClick={() => scrollToSection('projects')} className="hover:text-gray-300 transition-colors">Projects</button>
-        <button onClick={() => scrollToSection('skills')} className="hover:text-gray-300 transition-colors">Skills</button>
-        <button onClick={() => scrollToSection('experience')} className="hover:text-gray-300 transition-colors">Experience</button>
-        <button 
-          onClick={() => scrollToSection('contact')}
-          className="hover:text-gray-300 transition-colors"
-        >
-          Contact Me
-        </button>
+      <nav className="fixed top-5 right-5 md:right-10 z-20 flex flex-wrap items-center gap-2 rounded-2xl border border-white/10 bg-black/30 px-3 py-2 text-sm md:text-base font-medium text-white shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+        <button onClick={() => scrollToSection('home')} className="rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">Home</button>
+        <button onClick={() => scrollToSection('about')} className="rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">About Me</button>
+        <button onClick={() => scrollToSection('projects')} className="rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">Projects</button>
+        <button onClick={() => scrollToSection('skills')} className="rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">Skills</button>
+        <button onClick={() => scrollToSection('experience')} className="rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">Experience</button>
       </nav>
-
-      {/* ANIMATED BACKGROUND */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="floating-shape absolute w-96 h-96 -top-48 -left-48 bg-[#D4AF37]/5 rounded-full blur-3xl"></div>
-        <div className="floating-shape-delayed absolute w-96 h-96 -bottom-48 -right-48 bg-[#D4AF37]/5 rounded-full blur-3xl"></div>
-        <div className="absolute inset-0 grid-pattern"></div>
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-[#D4AF37]/5 rotate-45 floating-shape"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-[#D4AF37]/5 rotate-12 floating-shape-delayed"></div>
-        <div className="absolute top-1/3 right-1/3 w-16 h-16 bg-[#D4AF37]/5 rotate-90 floating-shape"></div>
-      </div>
 
       {/* MAIN CONTENT */}
       <div className="relative z-10">
         {/* HOME SECTION */}
-        <section id="home" className="min-h-screen flex items-center justify-center px-4">
+        <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-24">
           <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#D4AF37]/20 to-transparent"></div>
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-16 px-10">
+          <div className="w-full max-w-6xl rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+            <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-16">
             {/* PROFILE PICTURE WITH ORBITAL RINGS */}
             <div className="relative w-80 h-80 md:w-[22rem] md:h-[22rem] group">
               <div className="orbital-ring ring-1"></div>
@@ -425,64 +412,84 @@ export default function Home() {
             {/* TEXT SECTION */}
             <div className="text-center md:text-left max-w-xl">
               <div className="space-y-4">
-                <h1 className="text-5xl md:text-7xl font-bold gradient-text">
+                <h1 className="text-5xl md:text-7xl font-bold gradient-text tracking-tight">
                   Soham Gunturu
                 </h1>
-                <h2 className="text-2xl md:text-3xl font-semibold text-white/80">
+                <h2 className="text-2xl md:text-3xl font-semibold text-white/80 leading-relaxed">
                   CS @ Georgia Tech | Databricks, Amazon
                 </h2>
               </div>
 
               {/* BUTTONS */}
-              <div className="mt-12 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
-                <a 
-                  href="/Soham_Resume.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="group relative px-8 py-4 bg-[#D4AF37] text-black rounded-lg text-lg font-medium overflow-hidden transition-all hover:shadow-lg hover:shadow-[#D4AF37]/20"
+              <div className="mt-8 flex flex-wrap items-center gap-3 md:gap-4">
+                <a
+                  href="/Soham_Gunturu_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View CV"
+                  className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white hover:border-[#D4AF37]/40 hover:bg-white/[0.08] transition-colors"
                 >
-                  <span className="relative z-10">View CV</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#B8860B] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <FaFileAlt className="text-xl text-[#D4AF37]" />
                 </a>
-                <button 
-                  onClick={() => scrollToSection('contact')}
-                  className="group px-8 py-4 border-2 border-[#D4AF37] text-[#D4AF37] rounded-lg text-lg font-medium transition-all hover:bg-[#D4AF37] hover:text-black"
+                <a
+                  href="mailto:sgunturu30@gatech.edu"
+                  aria-label="Email"
+                  className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white hover:border-[#D4AF37]/40 hover:bg-white/[0.08] transition-colors"
                 >
-                  Contact Me
-                </button>
+                  <FaEnvelope className="text-xl text-[#D4AF37]" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/soham-gunturu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white hover:border-[#D4AF37]/40 hover:bg-white/[0.08] transition-colors"
+                >
+                  <FaLinkedin className="text-xl text-[#D4AF37]" />
+                </a>
+                <a
+                  href="https://github.com/SohamGunturu7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white hover:border-[#D4AF37]/40 hover:bg-white/[0.08] transition-colors"
+                >
+                  <FaGithub className="text-xl text-[#D4AF37]" />
+                </a>
               </div>
             </div>
           </div>
-          <div className="fixed top-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="fixed top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
-          <div className="fixed bottom-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"></div>
-          <div className="fixed bottom-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
-          <div className="fixed top-1/3 left-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[80px] animate-float"></div>
-          <div className="fixed bottom-1/3 right-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[80px] animate-float-delayed"></div>
+          </div>
+          <div className="pointer-events-none fixed top-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="pointer-events-none fixed top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
+          <div className="pointer-events-none fixed bottom-0 left-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2"></div>
+          <div className="pointer-events-none fixed bottom-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+          <div className="pointer-events-none fixed top-1/3 left-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[80px] animate-float"></div>
+          <div className="pointer-events-none fixed bottom-1/3 right-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-[80px] animate-float-delayed"></div>
         </section>
 
         {/* ABOUT SECTION */}
-        <section id="about" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
-            <h1 className="text-5xl font-bold text-white mb-10">
+        <section id="about" className="min-h-screen flex items-center justify-center px-4 py-24">
+          <div className="flex flex-col items-center justify-center w-full max-w-6xl">
+            <h1 className="text-5xl font-bold text-white mb-10 tracking-tight">
               About Me
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
             
-            <div className="flex flex-col md:flex-row items-center justify-center w-full bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg">
+            <div className="flex flex-col md:flex-row items-center justify-center w-full border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 md:p-10 rounded-2xl shadow-[0_12px_50px_rgba(0,0,0,0.3)]">
               {/* TEXT SECTION */}
-              <div className="w-full md:w-3/5 text-left px-6">
-                <p className="text-md text-white/90 leading-relaxed">
-                  Hey! I&apos;m Soham Gunturu, a Junior Computer Science student at Georgia Tech. I have a passion for software development, AI, and data science. This summer, I&apos;ll be joining Amazon as a Software Development Engineer Intern in Tempe, AZ. I&apos;m also interested in startup culture, so feel free to reach out!
+              <div className="w-full md:w-3/5 text-left px-2 md:px-6">
+                <p className="text-base text-white/90 leading-relaxed">
+                  Hey! I&apos;m Soham Gunturu, a Computer Science student at Georgia Tech. I&apos;m specifically interested in software development, AI, and systems engineering. This summer, I&apos;ll be joining Databricks as a Software Engineer Intern in Bellevue, WA. I&apos;m also very interested in startsup and venture capital, so feel free to reach out if you&apos;re building and would like to collaborate or chat!
                 </p>
-                <p className="mt-4 text-md text-white/90 leading-relaxed">
+                <p className="mt-4 text-base text-white/90 leading-relaxed">
                   I also have a passion for service. On campus, I participate in HexLabs, designing hackathons for under-resourced youth in Atlanta. Back in Ohio, I led DublinTOP Inc, a non-profit supporting youth through education and tennis. As Executive Director, I impacted over 1000 kids in 3+ states. I aim to find the intersection of technology and service to create meaningful impact throughout my career and beyond!
                 </p>
               </div>
 
               {/* IMAGE SECTION */}
               <div className="w-full md:w-2/5 flex justify-center mt-8 md:mt-0">
-                <div className="relative w-[20rem] h-[25rem]">
+                <div className="relative w-[18rem] h-[23rem] md:w-[20rem] md:h-[25rem]">
                   <Image 
                     src="/IMG_2223.JPG" 
                     alt="Soham Gunturu" 
@@ -494,11 +501,11 @@ export default function Home() {
             </div>
 
             {/* EDUCATION SECTION */}
-            <div className="flex flex-col items-center justify-center w-full bg-white/10 backdrop-blur-sm p-10 rounded-lg shadow-lg mt-10">
+            <div className="flex flex-col items-center justify-center w-full border border-white/10 bg-white/[0.04] backdrop-blur-xl p-8 md:p-10 rounded-2xl shadow-[0_12px_50px_rgba(0,0,0,0.3)] mt-10">
               <h2 className="text-3xl font-bold text-white text-glow mb-6">Education</h2>
-              <div className="flex flex-col md:flex-row w-full justify-around space-y-6 md:space-y-0 md:space-x-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-6">
                 {/* Georgia Tech */}
-                <div className="w-full md:w-2/5 bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 text-white p-6 rounded-lg shadow-lg relative hover:border-[#D4AF37]/40 transition-colors">
+                <div className="w-full bg-white/[0.03] backdrop-blur-sm border border-[#D4AF37]/20 text-white p-6 rounded-2xl shadow-lg relative hover:border-[#D4AF37]/40 transition-colors">
                   <Image 
                     src="/gt.jpeg" 
                     alt="Georgia Tech" 
@@ -514,7 +521,7 @@ export default function Home() {
                   </div>
                 </div>
                 {/* Ohio State University */}
-                <div className="w-full md:w-2/5 bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 text-white p-6 rounded-lg shadow-lg relative hover:border-[#D4AF37]/40 transition-colors">
+                <div className="w-full bg-white/[0.03] backdrop-blur-sm border border-[#D4AF37]/20 text-white p-6 rounded-2xl shadow-lg relative hover:border-[#D4AF37]/40 transition-colors">
                   <Image 
                     src="/osu.webp" 
                     alt="Ohio State University" 
@@ -535,15 +542,15 @@ export default function Home() {
         </section>
 
         {/* PROJECTS SECTION */}
-        <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-24">
           <div className="flex flex-col items-center justify-center w-full max-w-6xl">
-            <h1 className="text-5xl font-bold text-white mb-10">
+            <h1 className="text-5xl font-bold text-white mb-10 tracking-tight">
               Projects
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
             
             {/* Featured Projects */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mb-10">
               {[
                 { ...projects[1], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
                 { ...projects[3], isMain: true, githubLink: "https://github.com/SohamGunturu7/SpeakEasy" },
@@ -558,8 +565,8 @@ export default function Home() {
             </div>
 
             {/* Other Projects */}
-            <h2 className="text-3xl font-bold text-white mb-8 mt-12">Other Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-6 w-full">
+            <h2 className="text-3xl font-bold text-white mb-7 mt-10">Other Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
               {[projects[2], projects[4], projects[6], projects[7], projects[5]].map((project, index) => (
                 <Project
                   key={index}
@@ -571,42 +578,18 @@ export default function Home() {
         </section>
 
         {/* SKILLS SECTION */}
-        <section id="skills" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
-            <h1 className="text-5xl font-bold text-white mb-10">
+        <section id="skills" className="min-h-screen flex items-center justify-center px-4 py-24">
+          <div className="flex flex-col items-center justify-center w-full max-w-6xl">
+            <h1 className="text-5xl font-bold text-white mb-10 tracking-tight">
               Skills
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
             
             <div className="grid grid-cols-1 gap-8 w-full">
-              {/* Areas of Experience */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
-                <h2 className="text-2xl font-bold text-white mb-4">Areas of Experience</h2>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  {[
-                    { category: "Development", skills: ["Full Stack Development", "Software Engineering", "CI/CD"] },
-                    { category: "AI & Data", skills: ["Machine Learning", "AI/LLMs", "RAG"] },
-                    { category: "Analytics", skills: ["Data Science", "Data Analysis", "Quantitative Research"] },
-                    { category: "Infrastructure", skills: ["Database Management", "System Design", "Cloud Architecture"] }
-                  ].map((category) => (
-                    <div key={category.category} className="bg-white/5 p-4 rounded-lg">
-                      <span className="text-[#D4AF37] font-semibold mb-3 block">{category.category}</span>
-                      <div className="flex flex-col gap-2">
-                        {category.skills.map((skill) => (
-                          <span key={skill} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors text-sm">
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Languages */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-8 hover:border-[#D4AF37]/40 transition-colors">
-                <h2 className="text-3xl font-bold text-white mb-6">Languages</h2>
-                <div className="flex flex-wrap gap-4">
+              <div className="bg-white/[0.03] backdrop-blur-xl border border-[#D4AF37]/20 rounded-2xl p-8 hover:border-[#D4AF37]/40 transition-colors">
+                <h2 className="text-3xl font-bold text-white mb-5">Languages</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                   {[
                     { name: "Python", icon: <SiPython /> },
                     { name: "Java", icon: <SiJira /> },
@@ -615,24 +598,32 @@ export default function Home() {
                     { name: "R", icon: <SiR /> },
                     { name: "SQL", icon: <SiPostgresql /> },
                     { name: "HTML/CSS", icon: <SiHtml5 /> },
+                    { name: "Swift", icon: <SiSwift /> },
+                    { name: "Assembly", icon: <SiAssemblyscript /> },
                     { name: "C++", icon: <SiCplusplus /> },
                     { name: "C", icon: <SiC /> }
                   ].map((skill) => (
-                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-6 py-3 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-3">
-                      <span className="text-[#D4AF37] text-2xl">{skill.icon}</span>
-                      <span className="text-lg">{skill.name}</span>
-                    </span>
+                    <div key={skill.name} className="group bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 hover:border-[#D4AF37]/35 hover:bg-white/[0.06] transition-colors flex items-center gap-3">
+                      <span className="text-[#D4AF37] text-xl">{skill.icon}</span>
+                      <span className="text-base">{skill.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full items-stretch">
               {/* Tools & Platforms */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+              <div className="h-full bg-white/[0.03] backdrop-blur-xl border border-[#D4AF37]/20 rounded-2xl p-6 hover:border-[#D4AF37]/40 transition-colors">
                 <h2 className="text-2xl font-bold text-white mb-4">Tools & Platforms</h2>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div className="flex flex-wrap gap-3 justify-start content-start">
                   {[
                     { name: "Git", icon: <SiGit /> },
-                    { name: "AWS", icon: <SiAmazon /> },
+                    { name: "Supabase", icon: <SiSupabase /> },
+                    { name: "EC2", icon: <SiAmazonec2 /> },
+                    { name: "AWS Lambda", icon: <SiAwslambda /> },
+                    { name: "DynamoDB", icon: <SiAmazondynamodb /> },
+                    { name: "Redis", icon: <SiRedis /> },
+                    { name: "Kafka", icon: <SiApachekafka /> },
                     { name: "MongoDB", icon: <SiMongodb /> },
                     { name: "PostgreSQL", icon: <SiPostgresql /> },
                     { name: "Docker", icon: <SiDocker /> },
@@ -640,8 +631,8 @@ export default function Home() {
                     { name: "Jupyter", icon: <SiJupyter /> },
                     { name: "Firebase", icon: <SiFirebase /> },
                   ].map((skill) => (
-                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
-                      <span className="text-[#D4AF37]">{skill.icon}</span>
+                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2.5 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-colors text-base flex items-center gap-2.5">
+                      <span className="text-[#D4AF37] text-xl">{skill.icon}</span>
                       {skill.name}
                     </span>
                   ))}
@@ -649,9 +640,9 @@ export default function Home() {
               </div>
 
               {/* Frameworks & Libraries */}
-              <div className="bg-white/5 backdrop-blur-sm border border-[#D4AF37]/20 rounded-lg p-6 hover:border-[#D4AF37]/40 transition-colors">
+              <div className="h-full bg-white/[0.03] backdrop-blur-xl border border-[#D4AF37]/20 rounded-2xl p-6 hover:border-[#D4AF37]/40 transition-colors">
                 <h2 className="text-2xl font-bold text-white mb-4">Frameworks & Libraries</h2>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div className="flex flex-wrap gap-2.5 justify-start content-start">
                   {[
                     { name: "React.js", icon: <SiReact /> },
                     { name: "Next.js", icon: <SiNextdotjs /> },
@@ -659,6 +650,8 @@ export default function Home() {
                     { name: "Express.js", icon: <SiExpress /> },
                     { name: "Django", icon: <SiDjango /> },
                     { name: "Flask", icon: <SiFlask /> },
+                    { name: "FastAPI", icon: <SiFastapi /> },
+                    { name: "Redux", icon: <SiRedux /> },
                     { name: "Pandas", icon: <SiPandas /> },
                     { name: "Scikit-learn", icon: <SiScikitlearn /> },
                     { name: "Streamlit", icon: <SiStreamlit /> },
@@ -672,8 +665,8 @@ export default function Home() {
                     { name: "Scrapy", icon: <SiPython /> },
                     { name: "Matplotlib", icon: <SiPython /> }
                   ].map((skill) => (
-                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 transition-colors flex items-center gap-2">
-                      <span className="text-[#D4AF37]">{skill.icon}</span>
+                    <span key={skill.name} className="bg-[#D4AF37]/10 text-white px-4 py-2.5 rounded-full border border-[#D4AF37]/20 hover:bg-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-colors text-base flex items-center gap-2.5">
+                      <span className="text-[#D4AF37] text-xl">{skill.icon}</span>
                       {skill.name}
                     </span>
                   ))}
@@ -685,13 +678,14 @@ export default function Home() {
         </section>
 
         {/* EXPERIENCE SECTION */}
-        <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="flex flex-col items-center justify-center w-full max-w-5xl">
-            <h1 className="text-5xl font-bold text-white mb-12">
+        <section id="experience" className="min-h-screen flex items-center justify-center px-4 py-24">
+          <div className="flex flex-col items-center justify-center w-full max-w-6xl">
+            <h1 className="text-5xl font-bold text-white mb-12 tracking-tight">
               Experience
               <span className="block h-1 w-24 bg-[#D4AF37] mt-2 mx-auto"></span>
             </h1>
-            <div className="w-full space-y-6">
+            <div className="w-full space-y-5 relative md:pl-10">
+              <div className="hidden md:block absolute left-0 top-2 bottom-2 w-px bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent" />
               {experiences.map((exp, index) => (
                 <Experience
                   key={index}
@@ -702,50 +696,6 @@ export default function Home() {
                   logo={exp.logo}
                 />
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CONTACT SECTION */}
-        <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20">
-          <div className="relative flex flex-col items-center justify-center w-full max-w-4xl z-10">
-            <h1 className="text-5xl font-bold text-white text-glow-strong mb-16">Contact Me</h1>
-            <div className="grid grid-cols-2 gap-16 w-full max-w-3xl">
-              <a 
-                href="mailto:sgunturu30@gatech.edu" 
-                className="flex flex-col items-center group"
-              >
-                <FaEnvelope className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
-                <p className="text-white text-xl group-hover:text-gray-300">Email</p>
-              </a>
-
-              <a 
-                href="https://www.linkedin.com/in/soham-gunturu" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex flex-col items-center group"
-              >
-                <FaLinkedin className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
-                <p className="text-white text-xl group-hover:text-gray-300">LinkedIn Profile</p>
-              </a>
-
-              <a 
-                href="https://github.com/SohamGunturu7" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex flex-col items-center group"
-              >
-                <FaGithub className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
-                <p className="text-white text-xl group-hover:text-gray-300">GitHub Profile</p>
-              </a>
-
-              <a 
-                href="tel:614-477-4024" 
-                className="flex flex-col items-center group"
-              >
-                <FaPhone className="text-white text-7xl mb-6 group-hover:text-[#D4AF37] transition-all" />
-                <p className="text-white text-xl group-hover:text-gray-300">614-477-4024</p>
-              </a>
             </div>
           </div>
         </section>
