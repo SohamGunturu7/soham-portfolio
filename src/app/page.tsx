@@ -480,7 +480,7 @@ export default function Home() {
               {/* TEXT SECTION */}
               <div className="w-full md:w-3/5 text-left px-2 md:px-6">
                 <p className="text-base text-white/90 leading-relaxed">
-                  Hey! I&apos;m Soham Gunturu, a Computer Science student at Georgia Tech. I&apos;m specifically interested in software development, AI, and systems engineering. This summer, I&apos;ll be joining Databricks as a Software Engineer Intern in Bellevue, WA. I&apos;m also very interested in startsup and venture capital, so feel free to reach out if you&apos;re building and would like to collaborate or chat!
+                  Hey! I&apos;m Soham Gunturu, a Computer Science student at Georgia Tech. I&apos;m specifically interested in software development, AI, and systems engineering. This summer, I&apos;ll be joining Databricks as a Software Engineer Intern in Bellevue, WA. I&apos;m also very interested in startups and venture capital, so feel free to reach out if you&apos;re building and would like to collaborate or chat!
                 </p>
                 <p className="mt-4 text-base text-white/90 leading-relaxed">
                   I also have a passion for service. On campus, I participate in HexLabs, designing hackathons for under-resourced youth in Atlanta. Back in Ohio, I led DublinTOP Inc, a non-profit supporting youth through education and tennis. As Executive Director, I impacted over 1000 kids in 3+ states. I aim to find the intersection of technology and service to create meaningful impact throughout my career and beyond!
@@ -517,7 +517,7 @@ export default function Home() {
                     <h3 className="text-2xl font-bold">Georgia Tech</h3>
                     <p className="mt-2 text-md"><strong>BS in Computer Science</strong></p>
                     <p className="mt-2 text-md"><strong>Expected Graduation:</strong> May 2027</p>
-                    <p className="mt-2 text-md"><strong>Key Courses:</strong> Data Structures & Algorithms, Object-Oriented Programming, Discrete Math, Linear Algebra, Computer Architecture, Objects and Design</p>
+                    <p className="mt-2 text-md"><strong>Key Courses:</strong> Operatins Systems, Compilers and Interpreters, Machine Learning, Data Structures & Algorithms, Probability and Statistics, Algorithmic Design, Introduction to AI, Computer Architecture, Objects and Design</p>
                   </div>
                 </div>
                 {/* Ohio State University */}
