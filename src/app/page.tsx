@@ -2,7 +2,7 @@
 import React from "react";
 import { FaEnvelope, FaLinkedin, FaGithub, FaFileAlt } from 'react-icons/fa';
 import Image from 'next/image';
-import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress, SiNumpy, SiFastapi, SiRedux, SiSwift, SiAssemblyscript, SiSupabase, SiAmazonec2, SiAwslambda, SiAmazondynamodb, SiRedis, SiApachekafka } from 'react-icons/si';
+import { SiPython, SiReact, SiTypescript, SiJavascript, SiMongodb, SiPostgresql, SiDocker, SiFlask, SiNextdotjs, SiPytorch, SiTensorflow, SiR, SiHtml5, SiCplusplus, SiC, SiNodedotjs, SiPandas, SiScikitlearn, SiStreamlit, SiDjango, SiGit, SiLinux, SiJupyter, SiJira, SiHuggingface, SiNvidia, SiGoogle, SiCss3, SiMapbox, SiFirebase, SiExpress, SiNumpy, SiFastapi, SiRedux, SiSwift, SiAssemblyscript, SiSupabase, SiAmazonec2, SiAwslambda, SiAmazondynamodb, SiRedis, SiApachekafka, SiApple, SiOpenai } from 'react-icons/si';
 import { BsHexagonFill } from 'react-icons/bs';
 
 interface ExperienceProps {
@@ -108,8 +108,17 @@ const getTechIcon = (tech: string) => {
       return <SiNumpy className={iconClasses} />;
     case 'stable-baseline3':
       return <SiPython className={iconClasses} />; // fallback to Python icon
+    case 'arkit':
+    case 'avfoundation':
+      return <SiApple className={iconClasses} />;
+    case 'openrouter':
+      return <SiOpenai className={iconClasses} />;
+    case 'yolov8':
+    case 'yolo-v8':
+    case 'yolo':
+      return <BsHexagonFill className={iconClasses} />;
     default:
-      return null;
+      return <BsHexagonFill className={iconClasses} />;
   }
 };
 
@@ -223,7 +232,9 @@ export default function Home() {
     {
       title: "Databricks - Software Engineer Intern",
       description: [
-        "Summer 2026"
+        "Built persistence capabilities for different data manipulations in the datagrid, elevating customer satisfaction by 17%.",
+        "Built a data-prep workflow in TypeScript/MobX, shipping 12 grid actions as reusable operators in Lakeflow Designer.",
+        "Engineered PySpark-backed data operators for duplicate removal and null handling, improving product reach by 23%."
       ],
       timeframe: "May 2026 - Aug 2026",
       location: "Bellevue, WA",
@@ -232,9 +243,9 @@ export default function Home() {
     {
       title: "Microsoft - Product Fellow",
       description: [
-        "Created a product roadmap for an M365 tool designed to provide expedited resolution times for escalatons.",
-        "Developed an intelligent routing system with AI-generated documentation, HITL, and semantic search capabilities.",
-        "Worked under Product @ GT and Microsoft Atlanta!"
+        "Developed a full-stack agentic incident management system, estimated to save $500K annually in developer effort.",
+        "Trained a TF-IDF + Logistic Regression pipeline to route incidents to the correct team with 85%+ accuracy.",
+        "Contextualized tickets by surfacing similar historical cases and relevant resources, reducing triage time by 40%."
       ],
       timeframe: "Sep 2025 - Jan 2026",
       location: "Atlanta, GA",
@@ -243,31 +254,30 @@ export default function Home() {
     { 
       title: "Amazon - Software Development Engineer Intern", 
       description: [
-        "Built internal tooling using Java, React, and AWS to find and resolve conflicting product offers for the AmazonCustom team, reducing error diagnosing time by 20% and improving resolution scalability.",
-        "Developed a feature to enable sellers to download sample fulfillment zip files from buyer previews through redux manipulation and new backend functionality, inducing a 22% increase in seller adoption of the Buyer Preview feature and overall seller experience.",
-        "Pushed feature to production."
+        "Built internal tooling to detect and resolve conflicting custom product offers, cutting error diagnosis time by 20%.",
+        "Raised Buyer Preview usage by 22% by building a full-stack feature for sellers to download a sample fulfillment file.",
+        "Sped up deployment pipeline by 30% through optimization of Seller Central frontend and backend test suites."
       ],
       timeframe: "May 2025 - Aug 2025", 
       location: "Tempe, AZ",
       logo: "/amazon.jpg"
     },
     { 
-      title: "Georgia Tech College of Computing - Undergraduate Researcher", 
+      title: "Vijay Ganesh Lab - Undergraduate Researcher", 
       description: [
-        "Researching quantum physics phenomena using SAT solvers & Computer Algebra Systems for mathematical modeling.",
-        "Analyzing Ramsey's Problem and GHZ theorems through combinatorial mathematics and algorithmic approaches.",
-        "Developing computational solutions for the Kochen-Specker Problem in quantum mechanics applications."
+        "Integrating SAT Solver mechanisms with LLMs to enhance model reasoning and learning capabilities by 20%.",
+        "Building a Pydantic AI multi-agent system to apply Conflict-Driven Clause Learning (CDCL) to reasoning models."
       ], 
-      timeframe: "April 2025 - Present", 
+      timeframe: "Apr 2025 - Present", 
       location: "Atlanta, GA",
       logo: "/gt.jpeg"
     },
     { 
       title: "GROWER Lab - Data Engineer", 
       description: [
-        "Engineered data pipelines to analyze power grid resilience using AWS and Python for large-scale data processing.",
-        "Implemented machine learning models to predict outage patterns and identify infrastructure vulnerabilities.",
-        "Developed visualization tools and presented research findings to stakeholders for infrastructure improvements."
+        "Engineered AWS data pipelines for large-scale power grid resilience analysis using Python.",
+        "Built machine learning models to predict outage patterns and identify infrastructure vulnerabilities.",
+        "Delivered dashboards and presentations to stakeholders to support infrastructure improvement decisions."
       ], 
       timeframe: "Aug 2024 - Current", 
       location: "Atlanta, GA",
@@ -276,9 +286,9 @@ export default function Home() {
     { 
       title: "Nationwide Children's Hospital - Data Intern", 
       description: [
-        "Designed machine learning algorithms to analyze tumor characteristics and identify pattern correlations.",
-        "Enhanced diagnostic model accuracy by 30% through implementation of advanced statistical techniques.",
-        "Created comprehensive data visualization tools to communicate findings to medical professionals."
+        "Designed machine learning algorithms to characterize tumor data and identify predictive patterns.",
+        "Improved diagnostic model accuracy by 30% through statistical modeling and feature engineering.",
+        "Created data visualization tools to communicate findings to clinical and research audiences."
       ], 
       timeframe: "Jun 2023 - Dec 2023", 
       location: "Columbus, OH",
@@ -288,8 +298,8 @@ export default function Home() {
       title: "Harvard University - Data Intern", 
       description: [
         "Analyzed demographic trends using statistical methods to identify significant societal patterns.",
-        "Mentored 100+ students in data analytics projects while optimizing departmental CI/CD pipelines.",
-        "Reduced deployment times by 40% through implementation of automated testing and deployment systems."
+        "Mentored 100+ students on analytics projects while optimizing departmental CI/CD workflows.",
+        "Reduced deployment times by 40% through automation of testing and delivery pipelines."
       ], 
       timeframe: "Jun 2022 - Aug 2022", 
       location: "Cambridge, MA",
@@ -298,9 +308,9 @@ export default function Home() {
     { 
       title: "Ohio Supercomputer Center - Project Specialist", 
       description: [
-        "Developed simulation models to analyze human choice-making behavior using high-performance computing.",
-        "Created predictive algorithms to extrapolate individual patterns to population-level insights.",
-        "Built interactive data visualizations to present research findings to psychology department faculty."
+        "Developed HPC simulations to analyze human choice-making behavior.",
+        "Created predictive algorithms to generalize individual decision patterns to population-level insights.",
+        "Designed interactive visualizations for psychology research faculty presentations."
       ], 
       timeframe: "Jun 2022 - Jul 2022", 
       location: "Columbus, OH",
@@ -313,9 +323,9 @@ export default function Home() {
       title: "GT Marketplace (Typescript, ReactJS, Firebase, NodeJS, ExpressJS, HTML/CSS, Python)",
       description: "Developed a full-stack web application for Georgia Tech students to buy and sell items. Features include user authentication, real-time chat, and a responsive design. Utilized Firebase for backend services and ReactJS for the frontend."
     },
-    { 
-      title: "Travel App (Python, Django, JavaScript, Gemini, HTML, CSS, MapBox)",
-      description: "Built an AI-powered trip planner that leverages Google Gemini LLM to create intelligent, cost-aware itineraries with real-time adaptations. Features include interactive map visualization using MapBox, multi-role user management, and smart recommendations for accommodations and activities using hybrid ML algorithms."
+    {
+      title: "Ari (Swift, ARKit, YOLO-v8, Python, FastAPI, PostgreSQL, OpenRouter, AVFoundation)",
+      description: "Built a real-time assistant that personalizes task steps and uses AR and vision pipelines to track objects in the environment, guiding users through exact actions based on surroundings."
     },
     { 
       title: "GT Chatbot (PostgreSQL, Docker, ReactJS, Python, Scrapy)",
@@ -343,6 +353,10 @@ export default function Home() {
     },
     {title: "DeepQuote (C++, Python, PyBind, PyTorch, Gymnasium, Numpy, Stable-Baseline3)",
       description: "Built a high-frequency trading simulator that replicates real market conditions using a live order book, processing over 10,000 orders per second with detailed order flow and matching mechanics. It supports reinforcement learning agents operating in an 18-dimensional state space, enabling sophisticated trading strategies and real-time PnL tracking."
+    },
+    {
+      title: "Travel App (Python, Django, JavaScript, Gemini, HTML, CSS, MapBox)",
+      description: "Built an AI-powered trip planner that leverages Google Gemini LLM to create intelligent, cost-aware itineraries with real-time adaptations. Features include interactive map visualization using MapBox, multi-role user management, and smart recommendations for accommodations and activities using hybrid ML algorithms."
     },
   ];
 
@@ -517,7 +531,7 @@ export default function Home() {
                     <h3 className="text-2xl font-bold">Georgia Tech</h3>
                     <p className="mt-2 text-md"><strong>BS in Computer Science</strong></p>
                     <p className="mt-2 text-md"><strong>Expected Graduation:</strong> May 2027</p>
-                    <p className="mt-2 text-md"><strong>Key Courses:</strong> Operatins Systems, Compilers and Interpreters, Machine Learning, Data Structures & Algorithms, Probability and Statistics, Algorithmic Design, Introduction to AI, Computer Architecture, Objects and Design</p>
+                    <p className="mt-2 text-md"><strong>Key Courses:</strong> Operating Systems, Compilers and Interpreters, Machine Learning, Data Structures & Algorithms, Probability and Statistics, Algorithmic Design, Introduction to AI, Computer Architecture, Objects and Design</p>
                   </div>
                 </div>
                 {/* Ohio State University */}
@@ -552,7 +566,7 @@ export default function Home() {
             {/* Featured Projects */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mb-10">
               {[
-                { ...projects[1], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
+                { ...projects[9], isMain: true, githubLink: "https://github.com/SohamGunturu7/travelApp" },
                 { ...projects[3], isMain: true, githubLink: "https://github.com/SohamGunturu7/SpeakEasy" },
                 { ...projects[0], isMain: true, githubLink: "https://github.com/SohamGunturu7/GTMarketPlace" },
                 { ...projects[8], isMain:true, githubLink: "https://github.com/SohamGunturu7/deepquote"}
@@ -567,7 +581,7 @@ export default function Home() {
             {/* Other Projects */}
             <h2 className="text-3xl font-bold text-white mb-7 mt-10">Other Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-              {[projects[2], projects[4], projects[6], projects[7], projects[5]].map((project, index) => (
+              {[projects[1], projects[2], projects[4], projects[6], projects[7], projects[5]].map((project, index) => (
                 <Project
                   key={index}
                   {...project}
